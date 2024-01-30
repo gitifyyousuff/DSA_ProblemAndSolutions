@@ -9,6 +9,7 @@ class Solution:
                 return n
             else:
                 return find(par[n])
+#         def find(n):
 #             p = par[n]
             
 #             while p!=par[p]:

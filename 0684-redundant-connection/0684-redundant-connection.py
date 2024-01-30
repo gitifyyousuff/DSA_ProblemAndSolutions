@@ -31,7 +31,7 @@ class Solution:
                 par[p1] = p2
             else:
                 par[p1] = p2
-                rank[p2] += rank[p1]
+                rank[p2] += 1
                 
             return True
         

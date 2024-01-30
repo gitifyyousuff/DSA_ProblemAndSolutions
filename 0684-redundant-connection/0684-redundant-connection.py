@@ -5,13 +5,17 @@ class Solution:
         rank = [0] * (len(edges)+1)
         
         def find(n):
-            p = par[n]
+            if n == par[n]:
+                return n
+            else:
+                return find(par[n])
+#             p = par[n]
             
-            while p!=par[p]:
-                par[p] = par[par[p]]
-                p = par[p]
+#             while p!=par[p]:
+#                 par[p] = par[par[p]]
+#                 p = par[p]
                 
-            return p
+#             return p
         
         #n1-node1,n2-node2 respectively
         def union(n1,n2):

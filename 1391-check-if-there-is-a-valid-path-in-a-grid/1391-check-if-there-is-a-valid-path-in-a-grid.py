@@ -19,8 +19,8 @@ class Solution:
         while q:
             r,c = q.popleft()
 
-            if r<0 or c<0 or r==rows or c==cols:
-                continue
+            # if r<0 or c<0 or r==rows or c==cols:
+            #     continue
 
             if r == rows-1 and c == cols-1:
                 return True

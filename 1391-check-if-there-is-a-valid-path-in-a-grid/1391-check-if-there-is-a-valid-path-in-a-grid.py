@@ -14,7 +14,7 @@ class Solution:
 
         grid[0][0] = -grid[0][0]
 
-        directions = [[1,0,down],[0,1,right],[-1,0,up],[0,-1,left]]
+        # directions = [[1,0,down],[0,1,right],[-1,0,up],[0,-1,left]]
 
         while q:
             r,c = q.popleft()

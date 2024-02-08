@@ -27,10 +27,16 @@ class Solution:
                 
             return True
         
+        
+        #checking which nodes is connected
         for i in range(len(isConnected)):
             for j in range(len(isConnected[0])):
                 if isConnected[i][j] == 1:
                     union(i,j)
+        
+        #finding the ultimate parent 
+        #checking how many parents are there
+        #increment by 1 for the each ultimate parent
         count = 0            
         for j in range(len(isConnected[0])):
             if find(j) == j:

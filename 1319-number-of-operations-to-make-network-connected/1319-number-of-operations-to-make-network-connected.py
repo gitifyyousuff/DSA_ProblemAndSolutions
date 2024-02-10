@@ -72,7 +72,7 @@ class Solution:
                 
             return True
         
-        #calculation
+        #3. calculation
         return sum(dfs(node) for node in range(n))-1
                 
         

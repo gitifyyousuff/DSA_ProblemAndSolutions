@@ -1,7 +1,5 @@
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
-        print(n-1)
-        print(len(connections))
         #edge case
         if n-1 > len(connections):
             return -1

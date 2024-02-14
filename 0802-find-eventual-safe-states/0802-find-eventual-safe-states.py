@@ -9,11 +9,10 @@ class Solution:
                 return safe[i]
             safe[i] = False
             for neighbour in graph[i]:
-                print(neighbour)
                 if not dfs(neighbour):
                     return False
             safe[i] = True
-            return safe[i]
+            return True
             
         result = []  
         for i in range(n):

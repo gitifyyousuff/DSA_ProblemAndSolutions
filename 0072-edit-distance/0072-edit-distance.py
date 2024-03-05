@@ -8,7 +8,6 @@ class Solution(object):
         l1=len(word1)
         l2=len(word2)
         dp=[[0]*(l2+1) for i in range(l1+1)]
-        # cnt=0
         for i in range(l1+1):
             for j in range(l2+1):
                 if i==0:

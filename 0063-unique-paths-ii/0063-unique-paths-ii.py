@@ -1,23 +1,32 @@
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
-        m=len(obstacleGrid)
-        n=len(obstacleGrid[0])
-        dp=[[0 for _ in range(n)] for _ in range(m)]
-        for col in range(n):
-            if obstacleGrid[0][col]==1:
+        m = len(obstacleGrid)
+        n = len(obstacleGrid[0])
+        
+        dp = [[0 for i in range(n)] for j in range(m)]
+        
+        #setting cols of the dp array
+        for c in range(n):
+            if obstacleGrid[0][c] == 1:
                 break
-            dp[0][col]=1
-        for row in range(m):
-            if obstacleGrid[row][0]==1:
+            dp[0][c] = 1
+            
+        #setting rows of the dp array
+        for r in range(m):
+            if obstacleGrid[r][0] == 1:
                 break
-
-            dp[row][0]=1
-
-        for row in range(1,m):
-            for col in range(1,n):
-                if obstacleGrid[row][col]==1:
+            dp[r][0] = 1
+            
+       
+        
+        for r in range(1,m):
+            for c in range(1,n):
+                if obstacleGrid[r][c] == 1:
                     continue
-
-                dp[row][col]=dp[row-1][col]+dp[row][col-1]
-
-        return dp[-1][-1]  
+                    
+                dp[r][c] = dp[r][c-1]+dp[r-1][c]
+                
+        
+        return dp[-1][-1]
+        
+        

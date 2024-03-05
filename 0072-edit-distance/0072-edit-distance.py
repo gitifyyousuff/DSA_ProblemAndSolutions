@@ -1,21 +1,22 @@
-class Solution(object):
-    def minDistance(self, word1, word2):
-        """
-        :type word1: str
-        :type word2: str
-        :rtype: int
-        """
-        l1=len(word1)
-        l2=len(word2)
-        dp=[[0]*(l2+1) for i in range(l1+1)]
-        for i in range(l1+1):
-            for j in range(l2+1):
-                if i==0:
-                    dp[i][j]=j
-                elif j==0:
-                    dp[i][j]=i
-                elif word1[i-1]==word2[j-1]:
-                    dp[i][j]=dp[i-1][j-1]
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        m = len(word1)+1
+        n = len(word2)+1
+        
+        dp = [[0]*n for _ in range(m)]
+        
+        for i in range(m):
+            for j in range(n):
+                # filling up 0 to m,n range
+                if i == 0:
+                    dp[i][j] = j
+                elif j ==0 :
+                    dp[i][j] = i
+                #getting diagonal top value    
+                elif word1[i-1] == word2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]
+                #3 operations min val  + 1  
                 else:
-                    dp[i][j]=min(dp[i][j-1],dp[i-1][j],dp[i-1][j-1])+1
+                    dp[i][j] = min(dp[i][j-1],dp[i-1][j-1],dp[i-1][j]) + 1
+                    
         return dp[-1][-1]

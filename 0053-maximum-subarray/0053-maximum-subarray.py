@@ -4,11 +4,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        maxsub = nums[0]
-        cursum = 0
+        res = nums[0]
+        curr_sum = 0
+        
         for i in nums:
-            if cursum<0:
-                cursum = 0
-            cursum = cursum + i
-            maxsub = max(cursum,maxsub)
-        return maxsub
+            if curr_sum < 0:
+                curr_sum = 0
+                
+            curr_sum = i+curr_sum
+            res = max(curr_sum,res)
+            
+        return res

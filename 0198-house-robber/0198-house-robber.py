@@ -1,26 +1,29 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
         
-        #bottom-up approach - O(n)TS
-#         n = len(nums)
-#         if n == 1:
-#             return nums[0]
-        
-#         running_max = [nums[0],max(nums[0],nums[1])]
-        
-#         for i in range(2,n):
-#             curr_val = max(nums[i]+running_max[i-2],running_max[i-1])
-#             running_max.append(curr_val)
-            
-#         return running_max[-1]
+        if len(nums) == 2:
+            return nums[0] if nums[0] > nums[1] else nums[1]
 
-        #O(n)T,O(1)S
-        loot1,loot2 = 0,0
+        def dp(i, nums, cache):
+            # base case
+            if i >= len(nums)-2 and i < len(nums):
+                return nums[i]
+            if i >= len(nums)-1:
+                return 0
+            # cache
+            if i in cache:
+                return cache[i]
+
+            rob_next_2 = dp(i+2, nums, cache)
+            rob_next_3 = dp(i+3, nums, cache)
+
+            max_n = max(rob_next_2, rob_next_3)
+            cache[i] = max_n + nums[i]
+
+            return max_n + nums[i]
+
+        cache = {}
         
-        for v in nums:
-            temp = max(loot1+v,loot2)
-            loot1 = loot2
-            loot2 = temp
-            
-        return loot2
-    
+        return max(dp(0, nums, cache), dp(1, nums, cache))
